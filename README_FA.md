@@ -94,6 +94,8 @@ APP_MODE=polling
 APP_BASE_URL=
 WEBHOOK_SECRET=change_this_to_a_long_random_secret
 TELEGRAM_CA_FILE=./cacert.pem
+REQUIRE_CHANNEL_JOIN=1
+REQUIRED_CHANNEL_USERNAME=@rceold
 
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -127,10 +129,14 @@ POLLING_IDLE_SLEEP=1
 
 4. `.env` را تنظیم کنید:
 - `APP_MODE=polling`
+- `REQUIRE_CHANNEL_JOIN=1`
+- `REQUIRED_CHANNEL_USERNAME=@rceold`
 - `DB_HOST=127.0.0.1`
 - `DB_USER=root`
 - `DB_PASS=` (معمولاً خالی در XAMPP پیش‌فرض)
 - `WEBHOOK_SECRET` حتماً مقدار قوی داشته باشد.
+
+نکته مهم: برای بررسی عضویت اجباری، ربات باید در کانال موردنظر ادمین باشد؛ در غیر این صورت Telegram خطای `member list is inaccessible` می‌دهد.
 
 5. اجرای Polling:
 ```bash
@@ -225,6 +231,8 @@ php cli/polling.php
   - فعال/غیرفعال دریافت پیام
   - متن یا متن+مدیا
   - کلمات ممنوع
+- `/joincheck`
+  - بررسی عضویت اجباری کانال و فعال‌سازی دسترسی
 
 ## سناریوهای تست
 
@@ -278,4 +286,3 @@ php cli/polling.php
 - [ ] در production روی `public/` محدود شده‌اید (DocumentRoot)
 - [ ] `ADMIN_IDS` معتبر تنظیم شده
 - [ ] تست سناریوهای 1 تا 5 انجام شده
-

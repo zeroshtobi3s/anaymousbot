@@ -1,0 +1,8 @@
+/vendor/
+/.env
+/.idea/
+/.vscode/
+/logs/*.log
+/logs/polling.offset
+/logs/bot_username.cache
+/logs/maintenance.flag
